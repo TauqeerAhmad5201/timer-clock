@@ -1,0 +1,283 @@
+/* CSS Variables for Theme Management */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --border-color: #e0e0e0;
+    --button-bg: #f8f9fa;
+    --button-hover: #e9ecef;
+    --warning-color: #ff6b6b;
+}
+
+[data-theme="dark"] {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --primary-color: #4dabf7;
+    --secondary-color: #adb5bd;
+    --border-color: #333333;
+    --button-bg: #2c2c2c;
+    --button-hover: #404040;
+    --warning-color: #ff8787;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--button-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.theme-toggle:hover {
+    background: var(--button-hover);
+    transform: scale(1.1);
+}
+
+/* Controls Section */
+.controls {
+    margin-bottom: 3rem;
+}
+
+.time-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.input-group input {
+    width: 80px;
+    height: 50px;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--button-bg);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+.start-btn {
+    background: #28a745;
+    color: white;
+}
+
+.start-btn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+.pause-btn {
+    background: #ffc107;
+    color: #212529;
+}
+
+.pause-btn:hover {
+    background: #e0a800;
+    transform: translateY(-2px);
+}
+
+.reset-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.reset-btn:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Main Timer Display */
+.timer-display {
+    margin: 4rem 0;
+    padding: 2rem;
+}
+
+.time-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.time-digit {
+    font-size: clamp(8rem, 20vw, 24rem);
+    font-weight: 900;
+    font-family: 'Courier New', monospace;
+    line-height: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: color 0.3s ease;
+}
+
+.separator {
+    font-size: clamp(6rem, 15vw, 18rem);
+    font-weight: 900;
+    font-family: 'Courier New', monospace;
+    line-height: 1;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+/* Warning state for low time */
+.warning .time-digit {
+    color: var(--warning-color);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Status Indicator */
+.status-indicator {
+    margin-top: 2rem;
+}
+
+#statusText {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .time-inputs {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .control-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .time-digit {
+        font-size: clamp(4rem, 25vw, 8rem);
+    }
+    
+    .separator {
+        font-size: clamp(3rem, 20vw, 6rem);
+    }
+}
+
+/* Fullscreen mode for better visibility */
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullscreen .timer-display {
+    margin: 0;
+}
+
+.fullscreen .controls,
+.fullscreen .status-indicator {
+    display: none;
+}
