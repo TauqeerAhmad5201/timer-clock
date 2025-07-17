@@ -184,7 +184,7 @@ body {
 }
 
 .time-digit {
-    font-size: clamp(12rem, 25vw, 32rem);
+    font-size: clamp(16rem, 30vw, 40rem);
     font-weight: 900;
     font-family: 'Courier New', monospace;
     line-height: 1;
@@ -193,7 +193,7 @@ body {
 }
 
 .separator {
-    font-size: clamp(8rem, 20vw, 24rem);
+    font-size: clamp(12rem, 25vw, 30rem);
     font-weight: 900;
     font-family: 'Courier New', monospace;
     line-height: 1;
@@ -261,11 +261,11 @@ body {
 
 @media (max-width: 480px) {
     .time-digit {
-        font-size: clamp(6rem, 30vw, 12rem);
+        font-size: clamp(8rem, 35vw, 16rem);
     }
     
     .separator {
-        font-size: clamp(4rem, 25vw, 9rem);
+        font-size: clamp(6rem, 30vw, 12rem);
     }
 }
 
